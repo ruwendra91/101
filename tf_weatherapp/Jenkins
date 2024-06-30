@@ -16,14 +16,16 @@ pipeline {
                 script {
                     def instanceId = 'i-09fbe613c7dbbbc7c'
                     sh "aws ec2 describe-instances --instance-ids ${instanceId}"
+                    sh 'pwd'
                 }
             }
         }
 
         stage('Terraform Init') {
             steps {
-                dir('path/to/your/terraform/directory') {
+                dir('./') {
                     script {
+                        sh 'pwd'
                         sh 'terraform init'
                     }
                 }
