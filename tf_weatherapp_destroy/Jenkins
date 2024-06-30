@@ -1,0 +1,25 @@
+pipeline {
+    agent {
+        docker {
+            image 'awscli-v1-image' 
+            args '-u root'
+        }
+    }
+
+    environment {
+        AWS_DEFAULT_REGION = 'ap-southeast-2'
+    }
+
+    stages {
+        stage('Terraform Destroy') {
+            steps {
+                dir('./tf_weatherapp') {
+                    script {
+                        sh 'terraform destroy -auto-approve'
+                    }
+                }
+            }
+        }
+        
+    }
+}
