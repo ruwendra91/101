@@ -16,17 +16,35 @@ pipeline {
                 script {
                     def instanceId = 'i-09fbe613c7dbbbc7c'
                     sh "aws ec2 describe-instances --instance-ids ${instanceId}"
-                    sh 'pwd'
                 }
             }
         }
 
         stage('Terraform Init') {
             steps {
-                dir('./') {
+                dir('./tf_weatherapp') {
                     script {
-                        sh 'ls'
                         sh 'terraform init'
+                    }
+                }
+            }
+        }
+        
+        stage('Terraform plan') {
+            steps {
+                dir('./tf_weatherapp') {
+                    script {
+                        sh 'terraform plan'
+                    }
+                }
+            }
+        }
+
+        stage('Terraform Apply') {
+            steps {
+                dir('./tf_weatherapp') {
+                    script {
+                        sh 'terraform apply'
                     }
                 }
             }
