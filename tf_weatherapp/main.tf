@@ -69,7 +69,7 @@ resource "aws_lb_listener" "nlb_listener" {
 
 resource "aws_launch_configuration" "weather_lc" {
   name_prefix          = "weather_lc_"
-  image_id             = "ami-0592b275eb216ecfb"
+  image_id             = "ami-00f40b76164a90c56"
   instance_type        = "t3.micro"
   security_groups      = [aws_security_group.weather_instance_sg.id]
   iam_instance_profile = data.aws_iam_instance_profile.existing_profile.arn
