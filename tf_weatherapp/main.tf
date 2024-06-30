@@ -2,14 +2,6 @@ provider "aws" {
   region = "ap-southeast-2"
 }
 
-terraform {
-  backend "s3" {
-    bucket = "weatherapp-terraform-state-production"
-    key    = "weatherapp/terraform.tfstate"
-    region = "ap-southeast-2"
-  }
-}
-
 resource "aws_security_group" "weather_instance_sg" {
   name_prefix = "weather_sg_"
   vpc_id      = "vpc-0862f4a4297360be6"
