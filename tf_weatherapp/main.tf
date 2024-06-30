@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "weatherapp-terraform-state-staging"
+    bucket = "weatherapp-terraform-state-stage"
     key    = "tf_weatherapp/terraform.tfstate"
     region = "ap-southeast-2"
   }
