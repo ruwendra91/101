@@ -14,7 +14,7 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
-                dir('./tf_weatherapp') {
+                dir('./tf_weatherapp_destroy') {
                     script {
                         sh 'terraform init'
                     }
@@ -24,7 +24,7 @@ pipeline {
         
         stage('Terraform plan') {
             steps {
-                dir('./tf_weatherapp') {
+                dir('./tf_weatherapp_destroy') {
                     script {
                         sh 'terraform plan -auto-approve'
                     }
@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Terraform Destroy') {
             steps {
-                dir('./tf_weatherapp') {
+                dir('./tf_weatherapp_destroy') {
                     script {
                         sh 'terraform destroy -auto-approve'
                     }
