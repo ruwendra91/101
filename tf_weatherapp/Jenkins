@@ -34,7 +34,7 @@ pipeline {
             steps {
                 dir('./tf_weatherapp') {
                     script {
-                        sh 'terraform plan'
+                        sh 'terraform plan -out=tfplan -input=false'
                     }
                 }
             }
@@ -44,7 +44,7 @@ pipeline {
             steps {
                 dir('./tf_weatherapp') {
                     script {
-                        sh 'terraform apply'
+                        sh 'terraform apply -input=false tfplan'
                     }
                 }
             }
