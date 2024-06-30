@@ -56,6 +56,10 @@ resource "aws_lb" "nlb" {
   ]
 }
 
+output "nlb_dns_name" {
+  value = aws_lb.nlb.dns_name
+}
+
 resource "aws_lb_listener" "nlb_listener" {
   load_balancer_arn = aws_lb.nlb.arn
   port              = 80
