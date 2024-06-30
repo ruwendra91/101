@@ -12,6 +12,16 @@ pipeline {
 
     stages {
 
+        stage('Terraform Init') {
+            steps {
+                dir('./tf_weatherapp_destroy') {
+                    script {
+                        sh 'terraform init'
+                    }
+                }
+            }
+        }
+
         stage('Terraform Destroy') {
             steps {
                 dir('./tf_weatherapp_destroy') {
