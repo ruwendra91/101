@@ -1,18 +1,17 @@
 pipeline {
-    agent any
-
-    environment {
-        AWS_DEFAULT_REGION = 'ap-southeast-2'
+  agent {
+    docker { image 'node:16-alpine' }
+  }
+  stages {
+    stage('Test') {
+      steps {
+        sh 'node --version'
+      }
     }
-
-    stages {
-        stage('Describe EC2 Instance') {
-            steps {
-                script {
-                    def instanceId = 'i-09fbe613c7dbbbc7c'
-                    sh "aws ec2 describe-instances --instance-ids ${instanceId}"
-                }
-            }
-        }
+    stage('deploy') {
+      steps {
+        sh 'echo abc > aaa.txt'
+      } 
     }
+  }
 }
