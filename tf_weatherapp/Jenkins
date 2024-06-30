@@ -11,15 +11,6 @@ pipeline {
     }
 
     stages {
-        stage('Describe EC2 Instance') {
-            steps {
-                script {
-                    def instanceId = 'i-09fbe613c7dbbbc7c'
-                    sh "aws ec2 describe-instances --instance-ids ${instanceId}"
-                }
-            }
-        }
-
         stage('Terraform Init') {
             steps {
                 dir('./tf_weatherapp') {
