@@ -11,6 +11,26 @@ pipeline {
     }
 
     stages {
+
+        stage('Terraform Init') {
+            steps {
+                dir('./tf_weatherapp') {
+                    script {
+                        sh 'terraform init'
+                    }
+                }
+            }
+        }
+        
+        stage('Terraform plan') {
+            steps {
+                dir('./tf_weatherapp') {
+                    script {
+                        sh 'terraform plan -auto-approve'
+                    }
+                }
+            }
+        }
         stage('Terraform Destroy') {
             steps {
                 dir('./tf_weatherapp') {
