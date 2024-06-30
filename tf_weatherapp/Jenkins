@@ -36,6 +36,8 @@ pipeline {
                 dir('./tf_weatherapp') {
                     script {
                         sh 'terraform apply -input=false tfplan'
+                        def nlbDnsName = sh(script: 'terraform output nlb_dns_name', returnStdout: true).trim()
+                        echo "Network Load Balancer DNS Name: ${nlbDnsName}"
                     }
                 }
             }
