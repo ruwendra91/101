@@ -19,5 +19,15 @@ pipeline {
                 }
             }
         }
+
+        stage('Terraform Init') {
+            steps {
+                dir('path/to/your/terraform/directory') {
+                    script {
+                        sh 'terraform init'
+                    }
+                }
+            }
+        }
     }
 }
