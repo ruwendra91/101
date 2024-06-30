@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'awscli-v1-image' 
+            args '-u root'
+        }
+    }
 
     environment {
         AWS_DEFAULT_REGION = 'ap-southeast-2'
